@@ -20,11 +20,9 @@ changeRouting.onKeyUp(({action, context, device, event, payload}) => {
 
     if (!websocket.is_connected()) {
         console.warn("Not Connected to Utility, Unable to Execute");
-        $SD.setState(context, payload.state);
         $SD.showAlert(context);
     } else if (status === undefined || status.mixers[serial] === undefined) {
         console.warn("Mixer isn't present, unable to perform action")
-        $SD.setState(context, payload.state);
         $SD.showAlert(context);
     } else {
         let currentValue = status.mixers[serial].router[input][output];
