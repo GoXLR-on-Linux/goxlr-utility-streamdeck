@@ -1,5 +1,5 @@
 const toggleMixAssignment = new Action('com.frostycoolslug.goxlr-utility.toggle-mix-assignment');
-const mixAssignmentMonitors = {}
+const mixAssignmentMonitors = {};
 
 /// Utility Behaviours
 function mixAssignmentExternalStateChange() {
@@ -15,7 +15,7 @@ toggleMixAssignment.onKeyUp(({action, context, device, event, payload}) => {
     if (status.mixers[payload.settings.serial].levels.submix) {
         let serial = payload.settings.serial;
         let output = payload.settings.output;
-        let newState = payload.state ? "A" : "B"
+        let newState = payload.state ? "A" : "B";
 
         sendMixToggle(serial, output, newState)
     }

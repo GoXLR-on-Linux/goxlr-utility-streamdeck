@@ -53,10 +53,10 @@ function runPlugin() {
     }
 
     // Set any 'Known' form values, default others.
-    Utils.setFormValue(pluginSettings, document.querySelector("#toggle-mix-assignment-form"))
+    Utils.setFormValue(pluginSettings, document.querySelector("#set-monitor-mix-form"));
 
     // Get all the default filled fields and store them to settings.
-    pluginSettings = Utils.getFormValue(document.querySelector("#toggle-mix-assignment-form"));
+    pluginSettings = Utils.getFormValue(document.querySelector("#set-monitor-mix-form"));
     $PI.setSettings(pluginSettings);
 
     if (!device.mixers[pluginSettings.serial]?.levels.submix) {
@@ -70,21 +70,9 @@ function runPlugin() {
     websocket.disconnect();
 }
 
-document.querySelector("#mixers").addEventListener('change', (e) => {
-    pluginSettings = Utils.getFormValue(document.querySelector("#toggle-mix-assignment-form"));
-    $PI.setSettings(pluginSettings);
-
-    if (device.mixers[pluginSettings.serial]?.levels.submix) {
-        document.querySelector("#no-submix").classList.add("hidden");
-        document.querySelector("#settings").classList.remove("hidden");
-    } else {
-        document.querySelector("#no-submix").classList.remove("hidden");
-        document.querySelector("#settings").classList.add("hidden");
-    }
-});
-
-document.querySelector("#output").addEventListener('change', (e) => {
-    pluginSettings = Utils.getFormValue(document.querySelector("#toggle-mix-assignment-form"));
+document.querySelector("#mix").addEventListener('change', (e) => {
+    pluginSettings = Utils.getFormValue(document.querySelector("#set-monitor-mix-form"));
+    console.info("Mix changed, new settings: ", pluginSettings);
     $PI.setSettings(pluginSettings);
 });
 

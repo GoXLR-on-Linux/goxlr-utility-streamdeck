@@ -140,9 +140,21 @@
 					"Image": "actions/goxlr-utility/assets/goxlr-grey"
 				}
 			],
-			"Tooltip": "Configures the Mute Setting for the Microphone",
+			"Tooltip": "Toggles the Mix Assignment of the Selected Output between Mix A and Mix B",
 			"UUID": "com.frostycoolslug.goxlr-utility.toggle-mix-assignment",
 			"PropertyInspectorPath": "actions/goxlr-utility/property-inspector/toggle-mix-assignment/inspector.html"
+		},
+		{
+			"Icon": "actions/goxlr-utility/assets/goxlr-white",
+			"Name": "Set Monitor Mix",
+			"States": [
+				{
+					"Image": "actions/goxlr-utility/assets/goxlr-white"
+				}
+			],
+			"Tooltip": "Sets the Monitor's to the Selected Mix",
+			"UUID": "com.frostycoolslug.goxlr-utility.set-monitor-mix",
+			"PropertyInspectorPath": "actions/goxlr-utility/property-inspector/set-monitor-mix/inspector.html"
 		},
 		{
 			"Icon": "actions/goxlr-utility/assets/goxlr-white",
