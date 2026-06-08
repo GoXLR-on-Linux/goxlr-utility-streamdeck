@@ -53,10 +53,10 @@ function runPlugin() {
     }
 
     // Set any 'Known' form values, default others.
-    Utils.setFormValue(pluginSettings, document.querySelector("#set-monitor-mix-form"));
+    Utils.setFormValue(pluginSettings, document.querySelector("#monitor-mix-peak-form"));
 
     // Get all the default filled fields and store them to settings.
-    pluginSettings = Utils.getFormValue(document.querySelector("#set-monitor-mix-form"));
+    pluginSettings = Utils.getFormValue(document.querySelector("#monitor-mix-peak-form"));
     $PI.setSettings(pluginSettings);
 
     if (!device.mixers[pluginSettings.serial]?.levels.submix) {
@@ -71,7 +71,7 @@ function runPlugin() {
 }
 
 document.querySelector("#mix").addEventListener('change', (e) => {
-    pluginSettings = Utils.getFormValue(document.querySelector("#set-monitor-mix-form"));
+    pluginSettings = Utils.getFormValue(document.querySelector("#monitor-mix-peak-form"));
     $PI.setSettings(pluginSettings);
 });
 

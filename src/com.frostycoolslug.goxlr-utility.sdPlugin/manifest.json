@@ -158,6 +158,18 @@
 		},
 		{
 			"Icon": "actions/goxlr-utility/assets/goxlr-white",
+			"Name": "Monitor Mix Peak",
+			"States": [
+				{
+					"Image": "actions/goxlr-utility/assets/goxlr-white"
+				}
+			],
+			"Tooltip": "Toggles the Monitor mix to the opposite mix while held, returning to the original mix on release",
+			"UUID": "com.frostycoolslug.goxlr-utility.monitor-mix-peak",
+			"PropertyInspectorPath": "actions/goxlr-utility/property-inspector/monitor-mix-peak/inspector.html"
+		},
+		{
+			"Icon": "actions/goxlr-utility/assets/goxlr-white",
 			"Name": "Set Fx States",
 			"States": [
 				{
