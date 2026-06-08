@@ -33,8 +33,12 @@ setMonitorMixAssignment.onKeyUp(({action, context, device, event, payload}) => {
     } else {
         mixTarget = payload.settings.mix;
     }
-        
-    sendMonitorMix(serial, mixTarget);
+
+    if (status.mixers[serial].levels.output_monitor !== mixTarget) {
+        sendMonitorMix(serial, mixTarget);
+    } else {
+        $SD.setState(context, 0);
+    }
 });
 
 /// Configuration
@@ -128,9 +132,7 @@ class MonitorMixMonitor {
         let value = status.mixers[this.serial].levels.output_monitor;
 
         let state = (value === this.mix) ? 0 : 1;
-        if (this.mode === "peak") {
-            state = 0;
-        } 
+ 
         $SD.setImage(this.context);
         $SD.setState(this.context, state);
     }
