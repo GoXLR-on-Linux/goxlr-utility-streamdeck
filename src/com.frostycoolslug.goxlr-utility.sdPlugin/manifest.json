@@ -150,8 +150,10 @@
 			"States": [
 				{
 					"Image": "actions/goxlr-utility/assets/goxlr-white"
-				}
-			],
+				},
+				{
+					"Image": "actions/goxlr-utility/assets/goxlr-grey"
+				}			],
 			"Tooltip": "Sets the Monitor's to the Selected Mix",
 			"UUID": "com.frostycoolslug.goxlr-utility.set-monitor-mix",
 			"PropertyInspectorPath": "actions/goxlr-utility/property-inspector/set-monitor-mix/inspector.html"
