@@ -70,6 +70,11 @@ function runPlugin() {
     websocket.disconnect();
 }
 
+document.querySelector("#mode").addEventListener('change', (e) => {
+    pluginSettings = Utils.getFormValue(document.querySelector("#set-monitor-mix-form"));
+    $PI.setSettings(pluginSettings);
+});
+
 document.querySelector("#mix").addEventListener('change', (e) => {
     pluginSettings = Utils.getFormValue(document.querySelector("#set-monitor-mix-form"));
     $PI.setSettings(pluginSettings);
