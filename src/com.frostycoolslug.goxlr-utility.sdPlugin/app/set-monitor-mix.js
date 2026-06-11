@@ -111,20 +111,14 @@ class MonitorMixMonitor {
     #onEvent(self, event) {
         let patch = event.patch;
 
-        //if (patch.path === self.device || patch.path === self.monitor) {
+        if (patch.path === self.device || patch.path === self.monitor) {
             self.setState();
-        //}
+        }
     }
 
     setState() {
         console.log("Checking State..");
         if (status === undefined || status.mixers[this.serial] === undefined) {
-            $SD.setImage(this.context, RedIcon);
-            return;
-        }
-
-        // Don't try anything if we're a mini..
-        if (status.mixers[this.serial].effects === null) {
             $SD.setImage(this.context, RedIcon);
             return;
         }
