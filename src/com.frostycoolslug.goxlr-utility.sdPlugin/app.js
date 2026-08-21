@@ -65,6 +65,7 @@ function utilityOffline() {
     basicExternalStateChange();
     mixAssignmentExternalStateChange();
     faderBankExternalStateChange();
+    monitorMixExternalStateChange();
 }
 
 function utilityOnline() {
@@ -79,6 +80,7 @@ function utilityOnline() {
     basicExternalStateChange();
     mixAssignmentExternalStateChange();
     faderBankExternalStateChange();
+    monitorMixExternalStateChange();
 }
 
 function retryConnection() {

@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <form id="toggle-mix-assignment-form">
+    <form id="set-monitor-mix-form">
         <div id="main">
             <div class="hidden sdpi-item" style="max-width: none" id="no-mixers">
                 <details class="message caution">
@@ -45,16 +45,24 @@
                 </details>
             </div>
             <div class="hidden" id="settings">
+                <div class="sdpi-item" id="mode">
+                    <div class="sdpi-item-label">Mode</div>
+                    <select class="sdpi-item-value" id="mode" name="mode">
+                        <option value="set">Set</option>
+                        <option value="peak">Peak</option>
+                    </select>
+                </div>
+
                 <div class="sdpi-item">
-                    <div class="sdpi-item-label">Output</div>
-                    <select class="sdpi-item-value" id="output" name="output">
+                    <div class="sdpi-item-label">Mix</div>
+                    <select class="sdpi-item-value" id="mix" name="mix">
                         <option value="Headphones">Headphones</option>
                         <option id="mix1-2unsup" value="BroadcastMix">Stream Mix</option>
                         <option id="mix1-2sup" value="BroadcastMix">Stream Mix 1</option>
                         <option id="mix2" value="StreamMix2">Stream Mix 2</option>
+                        <option id="sampler" value="Sampler">Sampler</option>
                         <option value="LineOut">Line Out</option>
                         <option value="ChatMic">Chat Mic</option>
-                        <option id="sampler" value="Sampler">Sampler</option>
                     </select>
                 </div>
             </div>
