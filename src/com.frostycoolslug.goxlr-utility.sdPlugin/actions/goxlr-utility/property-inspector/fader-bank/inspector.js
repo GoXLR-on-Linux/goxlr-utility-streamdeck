@@ -3,6 +3,20 @@
 
 const websocket = new Websocket();
 let pluginSettings;
+let initialising = true;
+
+const inspectorDefaults = {
+    serial: '',
+    bank1_name: 'STANDARD',
+    bank2_name: 'EXTRA',
+    bank1_button_color: '#007C91',
+    bank2_button_color: '#9B3D91',
+    update_goxlr_appearance: 'yes',
+    use_a: 'yes', bank1_a: 'Mic', bank2_a: 'Game',
+    use_b: 'yes', bank1_b: 'Chat', bank2_b: 'Console',
+    use_c: 'yes', bank1_c: 'Music', bank2_c: 'LineIn',
+    use_d: 'yes', bank1_d: 'System', bank2_d: 'Sample'
+};
 
 const channelOptions = [
     ['Mic', 'Mic'],
@@ -50,8 +64,13 @@ function runPlugin() {
     }
 
     document.querySelector('#settings').classList.remove('hidden');
+    pluginSettings = Object.assign({}, inspectorDefaults, pluginSettings || {});
+    if (!pluginSettings.serial) {
+        pluginSettings.serial = mixers[0];
+    }
     Utils.setFormValue(pluginSettings, document.querySelector('#fader-bank-form'));
-    saveSettings();
+    $PI.setSettings(pluginSettings);
+    initialising = false;
     websocket.disconnect();
 }
 
@@ -60,5 +79,10 @@ function saveSettings() {
     $PI.setSettings(pluginSettings);
 }
 
-document.querySelector('#fader-bank-form').addEventListener('change', saveSettings);
-document.querySelector('#fader-bank-form').addEventListener('input', Utils.debounce(200, saveSettings));
+const saveSettingsDebounced = Utils.debounce(200, saveSettings);
+document.querySelector('#fader-bank-form').addEventListener('change', () => {
+    if (!initialising) saveSettings();
+});
+document.querySelector('#fader-bank-form').addEventListener('input', () => {
+    if (!initialising) saveSettingsDebounced();
+});
