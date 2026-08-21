@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8"/>
     <title>GoXLR Fader Bank</title>
     <link rel="stylesheet" href="../../../../libs/css/sdpi.css"/>
     <link rel="stylesheet" href="../global-settings/setup.css"/>
     <style>
         .bank-heading { margin-top: 10px; font-weight: 700; text-align: center; }
-        .fader-grid { display: grid; grid-template-columns: 46px 1fr 1fr; gap: 5px; align-items: center; width: 100%; }
+        .fader-grid { display: grid; grid-template-columns: 90px 1fr 1fr; gap: 5px; align-items: center; width: 100%; }
         .fader-grid select { min-width: 0; }
         .column-heading { color: #b8b8b8; font-size: 11px; text-align: center; }
         .hint { color: #b8b8b8; font-size: 11px; line-height: 1.35; padding: 8px; }
@@ -66,22 +67,22 @@
                 <div class="bank-heading">Fader assignments</div>
                 <div class="sdpi-item" style="max-width: none">
                     <div class="fader-grid">
-                        <div></div><div class="column-heading">BANK 1</div><div class="column-heading">BANK 2</div>
-                        <select name="use_a" title="Use fader A"><option value="yes">A ✓</option><option value="no">A –</option></select>
+                        <div class="column-heading">MODE</div><div class="column-heading">BANK 1</div><div class="column-heading">BANK 2</div>
+                        <select name="use_a" title="Switch or keep fader A"><option value="yes">A: switch</option><option value="no">A: keep</option></select>
                         <select name="bank1_a" class="channel-select" data-default="Mic"></select>
                         <select name="bank2_a" class="channel-select" data-default="Game"></select>
-                        <select name="use_b" title="Use fader B"><option value="yes">B ✓</option><option value="no">B –</option></select>
+                        <select name="use_b" title="Switch or keep fader B"><option value="yes">B: switch</option><option value="no">B: keep</option></select>
                         <select name="bank1_b" class="channel-select" data-default="Chat"></select>
                         <select name="bank2_b" class="channel-select" data-default="Console"></select>
-                        <select name="use_c" title="Use fader C"><option value="yes">C ✓</option><option value="no">C –</option></select>
+                        <select name="use_c" title="Switch or keep fader C"><option value="yes">C: switch</option><option value="no">C: keep</option></select>
                         <select name="bank1_c" class="channel-select" data-default="Music"></select>
                         <select name="bank2_c" class="channel-select" data-default="LineIn"></select>
-                        <select name="use_d" title="Use fader D"><option value="yes">D ✓</option><option value="no">D –</option></select>
+                        <select name="use_d" title="Switch or keep fader D"><option value="yes">D: switch</option><option value="no">D: keep</option></select>
                         <select name="bank1_d" class="channel-select" data-default="System"></select>
                         <select name="bank2_d" class="channel-select" data-default="Sample"></select>
                     </div>
                 </div>
-                <div class="hint">Select “–” to leave a fader unchanged. The key shows the active bank and current assignments. GoXLR scribble labels, icons, and colours can follow the selected channels.</div>
+                <div class="hint">Choose "keep" to leave a fader unchanged. Choose "switch" to assign its Bank 1 or Bank 2 channel when the key is pressed. The key shows the active bank and current assignments.</div>
             </div>
         </div>
     </form>
