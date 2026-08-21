@@ -4,10 +4,6 @@ const faderBankSwitching = new Set();
 
 const faderBankDefaults = {
     serial: '',
-    bank1_name: 'STANDARD',
-    bank2_name: 'EXTRA',
-    bank1_button_color: '#007C91',
-    bank2_button_color: '#9B3D91',
     update_goxlr_appearance: 'yes',
     use_a: 'yes',
     bank1_a: 'Mic',
@@ -24,17 +20,17 @@ const faderBankDefaults = {
 };
 
 const faderChannelAppearance = {
-    Mic: {label: 'Mic', short: 'MIC', faderColour: '00FFFF', scribbleColour: '00FFFF', icon: 'mic.png'},
-    Chat: {label: 'Voice Chat', short: 'CHAT', faderColour: 'FF2800', scribbleColour: 'FF1D00', icon: 'person.png'},
-    Music: {label: 'Music', short: 'MUSIC', faderColour: 'FFC300', scribbleColour: 'FFC300', icon: 'music.png'},
-    System: {label: 'System', short: 'SYS', faderColour: '533CFF', scribbleColour: 'B2ABFF', icon: 'level.png'},
-    Game: {label: 'Game', short: 'GAME', faderColour: '00E676', scribbleColour: '00E676', icon: 'scale.png'},
-    Console: {label: 'Console', short: 'CONS', faderColour: 'FF4F81', scribbleColour: 'FF4F81', icon: 'headphone.png'},
-    LineIn: {label: 'Line In', short: 'LINE', faderColour: '00B8D4', scribbleColour: '00B8D4', icon: 'level.png'},
-    Sample: {label: 'Samples', short: 'SAMP', faderColour: 'FF8C00', scribbleColour: 'FF8C00', icon: 'music.png'},
-    Headphones: {label: 'Headphones', short: 'PHONE', faderColour: '00AEEF', scribbleColour: '00AEEF', icon: 'headphone.png'},
-    MicMonitor: {label: 'Mic Monitor', short: 'MON', faderColour: '00FFFF', scribbleColour: '00FFFF', icon: 'mic3.png'},
-    LineOut: {label: 'Line Out', short: 'OUT', faderColour: '8D6E63', scribbleColour: '8D6E63', icon: 'level.png'}
+    Mic: {label: 'Mic', faderColour: '00FFFF', scribbleColour: '00FFFF', icon: 'mic.png'},
+    Chat: {label: 'Voice Chat', faderColour: 'FF2800', scribbleColour: 'FF1D00', icon: 'person.png'},
+    Music: {label: 'Music', faderColour: 'FFC300', scribbleColour: 'FFC300', icon: 'music.png'},
+    System: {label: 'System', faderColour: '533CFF', scribbleColour: 'B2ABFF', icon: 'level.png'},
+    Game: {label: 'Game', faderColour: '00E676', scribbleColour: '00E676', icon: 'scale.png'},
+    Console: {label: 'Console', faderColour: 'FF4F81', scribbleColour: 'FF4F81', icon: 'headphone.png'},
+    LineIn: {label: 'Line In', faderColour: '00B8D4', scribbleColour: '00B8D4', icon: 'level.png'},
+    Sample: {label: 'Samples', faderColour: 'FF8C00', scribbleColour: 'FF8C00', icon: 'music.png'},
+    Headphones: {label: 'Headphones', faderColour: '00AEEF', scribbleColour: '00AEEF', icon: 'headphone.png'},
+    MicMonitor: {label: 'Mic Monitor', faderColour: '00FFFF', scribbleColour: '00FFFF', icon: 'mic3.png'},
+    LineOut: {label: 'Line Out', faderColour: '8D6E63', scribbleColour: '8D6E63', icon: 'level.png'}
 };
 
 const faderNames = ['A', 'B', 'C', 'D'];
@@ -87,7 +83,6 @@ async function applyFaderBank(settings, bank) {
         let channel = getBankChannel(settings, bank, fader);
         let appearance = faderChannelAppearance[channel] || {
             label: channel,
-            short: channel,
             faderColour: 'FFFFFF',
             scribbleColour: 'FFFFFF',
             icon: ''
@@ -192,43 +187,12 @@ class FaderBankMonitor {
         }
 
         let bank = activeFaderBank(this.settings);
-        let mixer = status.mixers[this.settings.serial];
-        let background = bank === 1 ? this.settings.bank1_button_color :
-            (bank === 2 ? this.settings.bank2_button_color : '#343A40');
-        let bankName = bank === 1 ? this.settings.bank1_name :
-            (bank === 2 ? this.settings.bank2_name : 'MIXED');
-        let rows = [];
-
-        for (let fader of selectedFaders(this.settings)) {
-            let channel = mixer.fader_status[fader] ? mixer.fader_status[fader].channel : '?';
-            let appearance = faderChannelAppearance[channel] || {short: channel};
-            rows.push(`${fader}  ${appearance.short}`);
+        if (bank === 0) {
+            $SD.setImage(this.context, RedIcon);
+            return;
         }
 
-        let lineHeight = rows.length > 3 ? 19 : 22;
-        let startY = rows.length > 3 ? 65 : 70;
-        let rowMarkup = rows.map((row, index) =>
-            `<text x="72" y="${startY + index * lineHeight}" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="${rows.length > 3 ? 14 : 16}" font-weight="700">${escapeFaderBankXml(row)}</text>`
-        ).join('');
-
-        let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="144" height="144" viewBox="0 0 144 144">` +
-            `<rect width="144" height="144" rx="12" fill="${escapeFaderBankXml(background)}"/>` +
-            `<rect x="7" y="7" width="130" height="130" rx="9" fill="none" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="3"/>` +
-            `<text x="72" y="28" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="700">BANK ${bank || '?'}</text>` +
-            `<text x="72" y="49" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="800">${escapeFaderBankXml(bankName)}</text>` +
-            rowMarkup + `</svg>`;
-
-        let svgBase64 = btoa(unescape(encodeURIComponent(svg)));
-        $SD.setImage(this.context, `data:image/svg+xml;base64,${svgBase64}`);
+        $SD.setImage(this.context);
+        $SD.setState(this.context, bank === 2 ? 1 : 0);
     }
-}
-
-function escapeFaderBankXml(value) {
-    return String(value).replace(/[&<>"']/g, (character) => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&apos;'
-    })[character]);
 }

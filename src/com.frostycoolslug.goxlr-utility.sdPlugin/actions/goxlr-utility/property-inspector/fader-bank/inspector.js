@@ -7,10 +7,6 @@ let initialising = true;
 
 const inspectorDefaults = {
     serial: '',
-    bank1_name: 'STANDARD',
-    bank2_name: 'EXTRA',
-    bank1_button_color: '#007C91',
-    bank2_button_color: '#9B3D91',
     update_goxlr_appearance: 'yes',
     use_a: 'yes', bank1_a: 'Mic', bank2_a: 'Game',
     use_b: 'yes', bank1_b: 'Chat', bank2_b: 'Console',

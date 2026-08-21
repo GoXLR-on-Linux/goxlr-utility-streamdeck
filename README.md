@@ -42,16 +42,16 @@ Once connected, you should be able to configure actions.
 
 ### Fader Banks
 Add the **Toggle Fader Bank** action to switch any selection of the four hardware faders between two channel layouts.
-Each fader can be included or left unchanged independently. The Stream Deck key shows the active bank, its colour, and
-the current channel assignment. GoXLR scribble labels, icons, and fader colours can optionally follow the assigned
-channels as well.
+Each fader can be included or left unchanged independently. The Stream Deck key uses the plugin's standard light and
+dark GoXLR icons to show the active bank. GoXLR scribble labels, icons, and fader colours can optionally follow the
+assigned channels as well.
 
 The default layouts expose the eight standard input channels:
 
 * Bank 1: Mic, Chat, Music, System
 * Bank 2: Game, Console, Line In, Samples
 
-All fader-capable channels remain available in the property inspector, and both layouts and key colours are configurable.
+All fader-capable channels remain available in the property inspector, and both layouts are configurable.
 
 ## Troubleshooting
 ### The Icons are Red
