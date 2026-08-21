@@ -64,6 +64,7 @@ function utilityOffline() {
     encoderVolumeMonitorExternalStateChange();
     basicExternalStateChange();
     mixAssignmentExternalStateChange();
+    faderBankExternalStateChange();
 }
 
 function utilityOnline() {
@@ -77,6 +78,7 @@ function utilityOnline() {
     encoderVolumeMonitorExternalStateChange();
     basicExternalStateChange();
     mixAssignmentExternalStateChange();
+    faderBankExternalStateChange();
 }
 
 function retryConnection() {

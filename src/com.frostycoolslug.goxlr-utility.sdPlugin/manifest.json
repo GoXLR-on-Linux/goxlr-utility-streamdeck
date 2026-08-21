@@ -6,7 +6,7 @@
 	"Name": "GoXLR Utility for StreamDeck",
 	"Icon": "actions/goxlr-utility/assets/goxlr-white",
 	"URL": "https://github.com/frostycoolslug/goxlr-utility-streamdeck",
-	"Version": "0.4.3",
+	"Version": "0.4.4",
 	"Software": {
 		"MinimumVersion": "5.0"
 	},
@@ -143,6 +143,18 @@
 			"Tooltip": "Configures the Mute Setting for the Microphone",
 			"UUID": "com.frostycoolslug.goxlr-utility.toggle-mix-assignment",
 			"PropertyInspectorPath": "actions/goxlr-utility/property-inspector/toggle-mix-assignment/inspector.html"
+		},
+		{
+			"Icon": "actions/goxlr-utility/assets/goxlr-white",
+			"Name": "Toggle Fader Bank",
+			"States": [
+				{
+					"Image": "actions/goxlr-utility/assets/goxlr-white"
+				}
+			],
+			"Tooltip": "Switches selected GoXLR faders between two channel banks",
+			"UUID": "com.frostycoolslug.goxlr-utility.fader-bank",
+			"PropertyInspectorPath": "actions/goxlr-utility/property-inspector/fader-bank/inspector.html"
 		},
 		{
 			"Icon": "actions/goxlr-utility/assets/goxlr-white",

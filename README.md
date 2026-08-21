@@ -10,6 +10,7 @@ Join us for discussion related to the plugin on the [GoXLR Utiltiy](https://disc
 * Set / Adjust a Channel's Volume (includes submixes if available)
 * Set / Toggle a Route
 * Set / Toggle Fader Mute
+* Toggle selected faders between two configurable channel banks
 * Set / Toggle Microphone Mute
 * Set / Toggle FX Buttons
 
@@ -38,6 +39,19 @@ You should see a green 'Success' message if the plugin was able to connect, if n
 that the connection isn't being blocked by the firewall.
 
 Once connected, you should be able to configure actions.
+
+### Fader Banks
+Add the **Toggle Fader Bank** action to switch any selection of the four hardware faders between two channel layouts.
+Each fader can be included or left unchanged independently. The Stream Deck key shows the active bank, its colour, and
+the current channel assignment. GoXLR scribble labels, icons, and fader colours can optionally follow the assigned
+channels as well.
+
+The default layouts expose the eight standard input channels:
+
+* Bank 1: Mic, Chat, Music, System
+* Bank 2: Game, Console, Line In, Samples
+
+All fader-capable channels remain available in the property inspector, and both layouts and key colours are configurable.
 
 ## Troubleshooting
 ### The Icons are Red
