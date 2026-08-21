@@ -119,10 +119,8 @@ faderBankAction.onKeyUp(async ({context, payload}) => {
     let bank = activeFaderBank(settings) === 1 ? 2 : 1;
     try {
         await applyFaderBank(settings, bank);
-        if (faderBankMonitors[context]) {
-            faderBankMonitors[context].setDisplay();
-        }
-        $SD.showOk(context);
+        $SD.setImage(context);
+        $SD.setState(context, bank === 2 ? 1 : 0);
     } catch (error) {
         console.error('Unable to switch GoXLR fader bank', error);
         $SD.showAlert(context);
@@ -169,7 +167,7 @@ class FaderBankMonitor {
 
         let self = this;
         this.#eventHandle = function(event) {
-            if (event.patch.path.startsWith(self.faderPath)) {
+            if (event.patch.path.startsWith(self.faderPath) && !faderBankSwitching.has(self.context)) {
                 self.setDisplay();
             }
         };
