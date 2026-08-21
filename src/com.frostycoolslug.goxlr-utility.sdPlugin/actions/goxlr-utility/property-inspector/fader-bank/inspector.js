@@ -29,6 +29,8 @@ const channelOptions = [
 ];
 
 function runPlugin() {
+    document.querySelector('#refresh').classList.remove('hidden');
+
     let mixers = Object.keys(device.mixers || {});
     if (mixers.length === 0) {
         document.querySelector('#no-mixers').classList.remove('hidden');
